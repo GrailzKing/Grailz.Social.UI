@@ -302,8 +302,8 @@
   #poster .brandLogo {
     display: block;
     margin: 0 auto;
-    width: 44px;
-    height: 44px;
+    width: 78px;
+    height: 78px;
     object-fit: contain;
     pointer-events: none;
   }
@@ -453,8 +453,6 @@
     <input type="checkbox" id="logoShow" checked>
     <label for="logoShow" style="margin:0;font-size:13px;color:#e9e9ee;">Show Grailz logo</label>
   </div>
-  <label>Logo size</label>
-  <input type="range" id="logoSize" min="24" max="64" value="44">
     </div>
   </div>
 
@@ -687,13 +685,9 @@ document.getElementById('bgSize').addEventListener('input', () => {
 function syncLogo() {
   const logo = document.getElementById('brandLogo');
   const show = document.getElementById('logoShow').checked;
-  const size = document.getElementById('logoSize').value;
   logo.classList.toggle('hidden', !show);
-  logo.style.width = size + 'px';
-  logo.style.height = size + 'px';
 }
 document.getElementById('logoShow').addEventListener('change', syncLogo);
-document.getElementById('logoSize').addEventListener('input', syncLogo);
 
 document.querySelectorAll('.swatch').forEach(sw => {
   sw.addEventListener('click', () => {
@@ -786,7 +780,6 @@ document.getElementById('resetBtn').addEventListener('click', () => {
   poster.style.height = firstSize.dataset.h + 'px';
 
   document.getElementById('logoShow').checked = true;
-  document.getElementById('logoSize').value = 44;
   syncLogo();
 
   calcStats();
