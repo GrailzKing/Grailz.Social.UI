@@ -12,7 +12,7 @@ A single-file, no-build HTML tool for generating "Grailz Drop" stat-card graphic
 2. **Fill in the Content section**
    - Eyebrow, Title, Subtitle, and Tagline are all editable text fields.
    - Wrap any word in asterisks to color it with your theme's accent color —
-     e.g. typing `GYM BRO *SKELETOR*` colors just "SKELETOR."
+     e.g. typing `GRAILZ DROP *ARTIST*` colors just "ARTIST."
    - Pick a **Font style** from the dropdown (Rockstar, Popstar, Country,
      Grunge, EDM, Luxury, Script, Stadium, and more) to instantly change the
      whole poster's typographic vibe.
