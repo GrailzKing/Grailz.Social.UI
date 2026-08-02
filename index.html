@@ -144,18 +144,6 @@
     letter-spacing: 0.3px;
   }
   #resetBtn:hover { border-color: #ff5a5a; color: #ff5a5a; }
-  #bgClear {
-    width: 100%;
-    margin-top: 8px;
-    padding: 8px;
-    background: transparent;
-    border: 1px solid #33343f;
-    color: #cfd0d8;
-    font-size: 12px;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  #bgClear:hover { border-color: #ff5a5a; color: #ff5a5a; }
   #stage-wrap {
     flex: 1;
     display: flex;
@@ -258,9 +246,10 @@
   }
   #poster .tagline {
     text-align: center;
-    font-size: 15px;
-    letter-spacing: 4px;
-    color: #8b8d99;
+    font-size: 26px;
+    letter-spacing: 6px;
+    color: var(--accentB);
+    font-weight: 900;
     margin: 14px 0 20px;
     text-transform: var(--posterTransform, uppercase);
     font-family: var(--posterFont, 'Arial Black', Arial, sans-serif);
@@ -344,14 +333,14 @@
 <div id="panel">
   <h1>Grailz Media Template</h1>
 
-  <div class="section">
+  <div class="section collapsed">
     <button type="button" class="section-header"><span>Content</span><span class="chev">&#9660;</span></button>
     <div class="section-body">
   <label>Eyebrow / brand line (use *word* for accent color)</label>
   <input type="text" id="eyebrow" value="GRAILZ ARTIST DROP">
 
   <label>Title (use *word* for accent color)</label>
-  <textarea id="title">GYM BRO *SKELETOR*</textarea>
+  <textarea id="title">Grailz *Artist Drop!*</textarea>
 
   <label>Subtitle (use *word* for accent color)</label>
   <input type="text" id="subtitle" value="LIMITED EDITION">
@@ -375,7 +364,7 @@
     </div>
   </div>
 
-  <div class="section">
+  <div class="section collapsed">
     <button type="button" class="section-header"><span>Stats</span><span class="chev">&#9660;</span></button>
     <div class="section-body">
   <div class="row2">
@@ -389,7 +378,7 @@
     </div>
   </div>
 
-  <div class="section">
+  <div class="section collapsed">
     <button type="button" class="section-header"><span>Theme</span><span class="chev">&#9660;</span></button>
     <div class="section-body">
   <div class="theme-swatches">
@@ -413,22 +402,36 @@
     </div>
   </div>
 
-  <div class="section">
+  <div class="section collapsed">
     <button type="button" class="section-header"><span>Media</span><span class="chev">&#9660;</span></button>
     <div class="section-body">
 
-  <label style="margin-top:0;">Background image (full-bleed) URL, or upload below</label>
+  <label style="margin-top:0;">Background 1 (full-bleed) URL, or upload below</label>
   <input type="text" id="imgUrl" placeholder="https://...">
   <input type="file" id="imgFile" accept="image/*" style="margin-top:6px;">
-  <label>Background opacity</label>
+  <label>Background 1 opacity</label>
   <div class="fx-opacity" style="display:flex;align-items:center;gap:8px;margin-top:6px;">
     <input type="range" id="img1Opacity" min="0" max="100" value="22" style="flex:1;">
     <span id="img1OpacityLabel" style="font-size:11px;color:#9ea0ad;width:32px;text-align:right;">22%</span>
   </div>
-  <label>Background zoom</label>
+  <label>Background 1 zoom</label>
   <div class="fx-opacity" style="display:flex;align-items:center;gap:8px;margin-top:6px;">
     <input type="range" id="img1Size" min="100" max="220" value="100" style="flex:1;">
     <span id="img1SizeLabel" style="font-size:11px;color:#9ea0ad;width:32px;text-align:right;">100%</span>
+  </div>
+
+  <label style="margin-top:16px;">Background 2 URL, or upload below</label>
+  <input type="text" id="bgUrl" placeholder="https://...">
+  <input type="file" id="bgFile" accept="image/*" style="margin-top:6px;">
+  <label>Background 2 opacity</label>
+  <div class="fx-opacity" style="display:flex;align-items:center;gap:8px;margin-top:6px;">
+    <input type="range" id="bgOpacity" min="0" max="100" value="100" style="flex:1;">
+    <span id="bgOpacityLabel" style="font-size:11px;color:#9ea0ad;width:32px;text-align:right;">100%</span>
+  </div>
+  <label>Background 2 zoom</label>
+  <div class="fx-opacity" style="display:flex;align-items:center;gap:8px;margin-top:6px;">
+    <input type="range" id="bgSize" min="100" max="220" value="100" style="flex:1;">
+    <span id="bgSizeLabel" style="font-size:11px;color:#9ea0ad;width:32px;text-align:right;">100%</span>
   </div>
 
   <label style="margin-top:16px;">Main product image URL, or upload below</label>
@@ -444,21 +447,6 @@
     <input type="range" id="img2Size" min="30" max="180" value="100" style="flex:1;">
     <span id="img2SizeLabel" style="font-size:11px;color:#9ea0ad;width:32px;text-align:right;">100%</span>
   </div>
-
-  <label style="margin-top:16px;">Custom poster background URL, or upload below</label>
-  <input type="text" id="bgUrl" placeholder="https://...">
-  <input type="file" id="bgFile" accept="image/*" style="margin-top:6px;">
-  <label>Custom background opacity</label>
-  <div class="fx-opacity" style="display:flex;align-items:center;gap:8px;margin-top:6px;">
-    <input type="range" id="bgOpacity" min="0" max="100" value="100" style="flex:1;">
-    <span id="bgOpacityLabel" style="font-size:11px;color:#9ea0ad;width:32px;text-align:right;">100%</span>
-  </div>
-  <label>Custom background zoom</label>
-  <div class="fx-opacity" style="display:flex;align-items:center;gap:8px;margin-top:6px;">
-    <input type="range" id="bgSize" min="100" max="220" value="100" style="flex:1;">
-    <span id="bgSizeLabel" style="font-size:11px;color:#9ea0ad;width:32px;text-align:right;">100%</span>
-  </div>
-  <button id="bgClear">Clear custom background</button>
 
   <label style="margin-top:16px;">Grailz logo</label>
   <div style="display:flex;align-items:center;gap:10px;margin-top:6px;">
@@ -477,7 +465,7 @@
     </div>
   </div>
 
-  <div class="section">
+  <div class="section collapsed">
     <button type="button" class="section-header"><span>Platform size</span><span class="chev">&#9660;</span></button>
     <div class="section-body">
   <div id="sizeBtns">
@@ -501,7 +489,7 @@
     <div class="floor"></div>
     <div class="content">
       <div class="eyebrow" id="pEyebrow">GRAILZ ARTIST DROP</div>
-      <div class="title" id="pTitle">GYM BRO <span class="accent">SKELETOR</span></div>
+      <div class="title" id="pTitle">Grailz <span class="accent">Artist Drop!</span></div>
       <div class="subtitle" id="pSubtitle">LIMITED EDITION</div>
       <div class="art">
         <img id="pImg2" class="pImgMain" src="" alt="">
@@ -684,17 +672,6 @@ document.getElementById('bgFile').addEventListener('change', (e) => {
   reader.readAsDataURL(file);
 });
 
-document.getElementById('bgClear').addEventListener('click', () => {
-  document.getElementById('bgUrl').value = '';
-  document.getElementById('bgFile').value = '';
-  setBg(null);
-  document.getElementById('bgOpacity').value = 100;
-  document.getElementById('bgOpacityLabel').textContent = '100%';
-  document.getElementById('bgSize').value = 100;
-  document.getElementById('bgSizeLabel').textContent = '100%';
-  syncCustomBg();
-});
-
 function syncCustomBg() {
   const el = document.getElementById('customBg');
   const op = document.getElementById('bgOpacity').value / 100;
@@ -767,7 +744,7 @@ document.getElementById('downloadBtn').addEventListener('click', () => {
 
 const DEFAULTS = {
   eyebrow: 'GRAILZ ARTIST DROP',
-  title: 'GYM BRO *SKELETOR*',
+  title: 'Grailz *Artist Drop!*',
   subtitle: 'LIMITED EDITION',
   tagline: 'Artist Drop Sales Data',
   retail: '$50',
