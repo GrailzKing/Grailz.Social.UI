@@ -38,6 +38,35 @@
     text-transform: uppercase;
     color: #9ea0ad;
   }
+  .section { margin-top: 22px; }
+  .section:first-of-type { margin-top: 0; }
+  .section-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0 0 14px;
+    margin: 0;
+    cursor: pointer;
+    color: #9ea0ad;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: inherit;
+  }
+  .section-header:hover { color: #cfd0d8; }
+  .section-header .chev {
+    font-size: 11px;
+    color: #6b6d78;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+  .section.collapsed .section-header { padding-bottom: 0; }
+  .section.collapsed .chev { transform: rotate(-90deg); }
+  .section.collapsed .section-body { display: none; }
   #panel label {
     display: block;
     font-size: 12px;
@@ -307,7 +336,10 @@
 
 <div id="panel">
   <h1>Grailz Media Template</h1>
-  <h2>Content</h2>
+
+  <div class="section">
+    <button type="button" class="section-header"><span>Content</span><span class="chev">&#9660;</span></button>
+    <div class="section-body">
   <label>Eyebrow / brand line (use *word* for accent color)</label>
   <input type="text" id="eyebrow" value="GRAILZ ARTIST DROP">
 
@@ -319,8 +351,12 @@
 
   <label>Tagline (use *word* for accent color)</label>
   <input type="text" id="tagline" value="Artist Drop Sales Data">
+    </div>
+  </div>
 
-  <h2 style="margin-top:22px;">Stats</h2>
+  <div class="section">
+    <button type="button" class="section-header"><span>Stats</span><span class="chev">&#9660;</span></button>
+    <div class="section-body">
   <div class="row2">
     <div><label>Retail (cost)</label><input type="text" id="retail" value="$50"></div>
     <div><label>Resale</label><input type="text" id="resale" value="$130"></div>
@@ -329,8 +365,12 @@
     <div><label>Return (auto)</label><input type="text" id="ret" value="X2.6" readonly></div>
     <div><label>Profit (auto)</label><input type="text" id="profit" value="$80" readonly></div>
   </div>
+    </div>
+  </div>
 
-  <h2 style="margin-top:22px;">Theme</h2>
+  <div class="section">
+    <button type="button" class="section-header"><span>Theme</span><span class="chev">&#9660;</span></button>
+    <div class="section-body">
   <div class="theme-swatches">
     <div class="swatch" data-a="#ff2e63" data-b="#2ec5ff" style="background:linear-gradient(90deg,#ff2e63,#2ec5ff)" title="Pink/Blue"></div>
     <div class="swatch" data-a="#3dff8f" data-b="#ffffff" style="background:linear-gradient(90deg,#3dff8f,#888)" title="Green/White"></div>
@@ -349,8 +389,12 @@
     <div class="swatch" data-a="#ff6f59" data-b="#00e0c6" style="background:linear-gradient(90deg,#ff6f59,#00e0c6)" title="Coral/Teal"></div>
     <div class="swatch" data-a="#39ff14" data-b="#f2f2f2" style="background:linear-gradient(90deg,#39ff14,#888)" title="Neon Green/White"></div>
   </div>
+    </div>
+  </div>
 
-  <h2 style="margin-top:22px;">Media</h2>
+  <div class="section">
+    <button type="button" class="section-header"><span>Media</span><span class="chev">&#9660;</span></button>
+    <div class="section-body">
 
   <label style="margin-top:0;">Background image (full-bleed) URL, or upload below</label>
   <input type="text" id="imgUrl" placeholder="https://...">
@@ -409,12 +453,18 @@
   </select>
   <label>Logo size</label>
   <input type="range" id="logoSize" min="40" max="140" value="70">
+    </div>
+  </div>
 
-  <h2 style="margin-top:22px;">Platform size</h2>
+  <div class="section">
+    <button type="button" class="section-header"><span>Platform size</span><span class="chev">&#9660;</span></button>
+    <div class="section-body">
   <div id="sizeBtns">
     <button class="active" data-w="1080" data-h="1080">Square 1:1</button>
     <button data-w="1080" data-h="1350">Portrait 4:5</button>
     <button data-w="1080" data-h="1920">Story 9:16</button>
+  </div>
+    </div>
   </div>
 
   <button id="downloadBtn">Download PNG</button>
@@ -650,6 +700,13 @@ document.querySelectorAll('#sizeBtns button').forEach(btn => {
     poster.style.width = btn.dataset.w + 'px';
     poster.style.height = btn.dataset.h + 'px';
     fitStage();
+  });
+});
+
+/* ---- Collapsible sections ---- */
+document.querySelectorAll('.section-header').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.closest('.section').classList.toggle('collapsed');
   });
 });
 
