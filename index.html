@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Flip Post Template Generator</title>
+<title>Grailz Media Template</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
   * { box-sizing: border-box; }
@@ -21,6 +21,15 @@
     padding: 20px;
     overflow-y: auto;
     border-right: 1px solid #2c2d36;
+  }
+  #panel h1 {
+    font-size: 18px;
+    margin: 0 0 20px;
+    letter-spacing: 0.3px;
+    color: #fff;
+    font-weight: 800;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #2c2d36;
   }
   #panel h2 {
     font-size: 15px;
@@ -297,6 +306,7 @@
 <body>
 
 <div id="panel">
+  <h1>Grailz Media Template</h1>
   <h2>Content</h2>
   <label>Eyebrow / brand line (use *word* for accent color)</label>
   <input type="text" id="eyebrow" value="GRAILZ ARTIST DROP">
@@ -309,35 +319,6 @@
 
   <label>Tagline (use *word* for accent color)</label>
   <input type="text" id="tagline" value="Artist Drop Sales Data">
-
-  <label>Background image URL (or upload below)</label>
-  <input type="text" id="imgUrl" placeholder="https://...">
-  <input type="file" id="imgFile" accept="image/*" style="margin-top:6px;">
-  <label>Background opacity</label>
-  <div class="fx-opacity" style="display:flex;align-items:center;gap:8px;margin-top:6px;">
-    <input type="range" id="img1Opacity" min="0" max="100" value="22" style="flex:1;">
-    <span id="img1OpacityLabel" style="font-size:11px;color:#9ea0ad;width:32px;text-align:right;">22%</span>
-  </div>
-  <label>Background zoom</label>
-  <div class="fx-opacity" style="display:flex;align-items:center;gap:8px;margin-top:6px;">
-    <input type="range" id="img1Size" min="100" max="220" value="100" style="flex:1;">
-    <span id="img1SizeLabel" style="font-size:11px;color:#9ea0ad;width:32px;text-align:right;">100%</span>
-  </div>
-
-  <label style="margin-top:16px;">Main product image URL (or upload below)</label>
-  <input type="text" id="imgUrl2" placeholder="https://...">
-  <input type="file" id="imgFile2" accept="image/*" style="margin-top:6px;">
-  <label>Product opacity</label>
-  <div class="fx-opacity" style="display:flex;align-items:center;gap:8px;margin-top:6px;">
-    <input type="range" id="img2Opacity" min="0" max="100" value="100" style="flex:1;">
-    <span id="img2OpacityLabel" style="font-size:11px;color:#9ea0ad;width:32px;text-align:right;">100%</span>
-  </div>
-  <label>Product size</label>
-  <div class="fx-opacity" style="display:flex;align-items:center;gap:8px;margin-top:6px;">
-    <input type="range" id="img2Size" min="30" max="180" value="100" style="flex:1;">
-    <span id="img2SizeLabel" style="font-size:11px;color:#9ea0ad;width:32px;text-align:right;">100%</span>
-  </div>
-
 
   <h2 style="margin-top:22px;">Stats</h2>
   <div class="row2">
@@ -369,20 +350,52 @@
     <div class="swatch" data-a="#39ff14" data-b="#f2f2f2" style="background:linear-gradient(90deg,#39ff14,#888)" title="Neon Green/White"></div>
   </div>
 
-  <h2 style="margin-top:22px;">Background</h2>
-  <label>Custom background image URL (or upload below)</label>
-  <input type="text" id="bgUrl" placeholder="https://...">
-  <input type="file" id="bgFile" accept="image/*" style="margin-top:6px;">
-  <button id="bgClear">Clear background</button>
+  <h2 style="margin-top:22px;">Media</h2>
 
-  <h2 style="margin-top:22px;">Platform size</h2>
-  <div id="sizeBtns">
-    <button class="active" data-w="1080" data-h="1080">Square 1:1</button>
-    <button data-w="1080" data-h="1350">Portrait 4:5</button>
-    <button data-w="1080" data-h="1920">Story 9:16</button>
+  <label style="margin-top:0;">Background image (full-bleed) URL, or upload below</label>
+  <input type="text" id="imgUrl" placeholder="https://...">
+  <input type="file" id="imgFile" accept="image/*" style="margin-top:6px;">
+  <label>Background opacity</label>
+  <div class="fx-opacity" style="display:flex;align-items:center;gap:8px;margin-top:6px;">
+    <input type="range" id="img1Opacity" min="0" max="100" value="22" style="flex:1;">
+    <span id="img1OpacityLabel" style="font-size:11px;color:#9ea0ad;width:32px;text-align:right;">22%</span>
+  </div>
+  <label>Background zoom</label>
+  <div class="fx-opacity" style="display:flex;align-items:center;gap:8px;margin-top:6px;">
+    <input type="range" id="img1Size" min="100" max="220" value="100" style="flex:1;">
+    <span id="img1SizeLabel" style="font-size:11px;color:#9ea0ad;width:32px;text-align:right;">100%</span>
   </div>
 
-  <h2 style="margin-top:22px;">Branding</h2>
+  <label style="margin-top:16px;">Main product image URL, or upload below</label>
+  <input type="text" id="imgUrl2" placeholder="https://...">
+  <input type="file" id="imgFile2" accept="image/*" style="margin-top:6px;">
+  <label>Product opacity</label>
+  <div class="fx-opacity" style="display:flex;align-items:center;gap:8px;margin-top:6px;">
+    <input type="range" id="img2Opacity" min="0" max="100" value="100" style="flex:1;">
+    <span id="img2OpacityLabel" style="font-size:11px;color:#9ea0ad;width:32px;text-align:right;">100%</span>
+  </div>
+  <label>Product size</label>
+  <div class="fx-opacity" style="display:flex;align-items:center;gap:8px;margin-top:6px;">
+    <input type="range" id="img2Size" min="30" max="180" value="100" style="flex:1;">
+    <span id="img2SizeLabel" style="font-size:11px;color:#9ea0ad;width:32px;text-align:right;">100%</span>
+  </div>
+
+  <label style="margin-top:16px;">Custom poster background URL, or upload below</label>
+  <input type="text" id="bgUrl" placeholder="https://...">
+  <input type="file" id="bgFile" accept="image/*" style="margin-top:6px;">
+  <label>Custom background opacity</label>
+  <div class="fx-opacity" style="display:flex;align-items:center;gap:8px;margin-top:6px;">
+    <input type="range" id="bgOpacity" min="0" max="100" value="100" style="flex:1;">
+    <span id="bgOpacityLabel" style="font-size:11px;color:#9ea0ad;width:32px;text-align:right;">100%</span>
+  </div>
+  <label>Custom background zoom</label>
+  <div class="fx-opacity" style="display:flex;align-items:center;gap:8px;margin-top:6px;">
+    <input type="range" id="bgSize" min="100" max="220" value="100" style="flex:1;">
+    <span id="bgSizeLabel" style="font-size:11px;color:#9ea0ad;width:32px;text-align:right;">100%</span>
+  </div>
+  <button id="bgClear">Clear custom background</button>
+
+  <label style="margin-top:16px;">Grailz logo</label>
   <div style="display:flex;align-items:center;gap:10px;margin-top:6px;">
     <input type="checkbox" id="logoShow" checked>
     <label for="logoShow" style="margin:0;font-size:13px;color:#e9e9ee;">Show Grailz logo</label>
@@ -396,6 +409,13 @@
   </select>
   <label>Logo size</label>
   <input type="range" id="logoSize" min="40" max="140" value="70">
+
+  <h2 style="margin-top:22px;">Platform size</h2>
+  <div id="sizeBtns">
+    <button class="active" data-w="1080" data-h="1080">Square 1:1</button>
+    <button data-w="1080" data-h="1350">Portrait 4:5</button>
+    <button data-w="1080" data-h="1920">Story 9:16</button>
+  </div>
 
   <button id="downloadBtn">Download PNG</button>
   <button id="resetBtn">Reset to defaults</button>
@@ -575,6 +595,27 @@ document.getElementById('bgClear').addEventListener('click', () => {
   document.getElementById('bgUrl').value = '';
   document.getElementById('bgFile').value = '';
   setBg(null);
+  document.getElementById('bgOpacity').value = 100;
+  document.getElementById('bgOpacityLabel').textContent = '100%';
+  document.getElementById('bgSize').value = 100;
+  document.getElementById('bgSizeLabel').textContent = '100%';
+  syncCustomBg();
+});
+
+function syncCustomBg() {
+  const el = document.getElementById('customBg');
+  const op = document.getElementById('bgOpacity').value / 100;
+  const zoom = document.getElementById('bgSize').value / 100;
+  el.style.opacity = op;
+  el.style.transform = `scale(${zoom})`;
+}
+document.getElementById('bgOpacity').addEventListener('input', () => {
+  document.getElementById('bgOpacityLabel').textContent = document.getElementById('bgOpacity').value + '%';
+  syncCustomBg();
+});
+document.getElementById('bgSize').addEventListener('input', () => {
+  document.getElementById('bgSizeLabel').textContent = document.getElementById('bgSize').value + '%';
+  syncCustomBg();
 });
 
 /* ---- Brand logo ---- */
@@ -656,6 +697,11 @@ document.getElementById('resetBtn').addEventListener('click', () => {
   document.getElementById('bgUrl').value = '';
   document.getElementById('bgFile').value = '';
   setBg(null);
+  document.getElementById('bgOpacity').value = 100;
+  document.getElementById('bgOpacityLabel').textContent = '100%';
+  document.getElementById('bgSize').value = 100;
+  document.getElementById('bgSizeLabel').textContent = '100%';
+  syncCustomBg();
 
   document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
   const firstSwatch = document.querySelector('.swatch');
@@ -679,12 +725,13 @@ document.getElementById('resetBtn').addEventListener('click', () => {
 });
 
 window.addEventListener('resize', fitStage);
-window.addEventListener('load', () => { calcStats(); sync(); fitStage(); syncLogo(); syncImgOpacity(); syncImgSize(); });
+window.addEventListener('load', () => { calcStats(); sync(); fitStage(); syncLogo(); syncImgOpacity(); syncImgSize(); syncCustomBg(); });
 calcStats();
 sync();
 syncLogo();
 syncImgOpacity();
 syncImgSize();
+syncCustomBg();
 </script>
 
 </body>
