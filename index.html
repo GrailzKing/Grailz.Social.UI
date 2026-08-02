@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <title>Grailz Media Template</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Permanent+Marker&family=Bungee&family=Rye&family=Luckiest+Guy&family=Orbitron:wght@700;900&family=Playfair+Display:wght@800;900&family=Pacifico&family=Staatliches&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
   body {
@@ -224,6 +227,7 @@
     color: var(--accentB);
     font-weight: 900;
     margin-bottom: 6px;
+    font-family: var(--posterFont, 'Arial Black', Arial, sans-serif);
   }
   #poster .title {
     text-align: center;
@@ -231,8 +235,9 @@
     line-height: 1.0;
     color: #fff;
     font-weight: 900;
-    text-transform: uppercase;
+    text-transform: var(--posterTransform, uppercase);
     -webkit-text-stroke: 1px rgba(255,255,255,0.05);
+    font-family: var(--posterFont, 'Arial Black', Arial, sans-serif);
   }
   #poster .title .accent { color: var(--accentA); }
   #poster .eyebrow .accent, #poster .subtitle .accent, #poster .tagline .accent { color: var(--accentA); }
@@ -243,7 +248,8 @@
     color: #cfd0d8;
     font-weight: 400;
     margin-top: 14px;
-    text-transform: uppercase;
+    text-transform: var(--posterTransform, uppercase);
+    font-family: var(--posterFont, 'Arial Black', Arial, sans-serif);
   }
   #poster .subtitle::before, #poster .subtitle::after {
     content: '—';
@@ -256,7 +262,8 @@
     letter-spacing: 4px;
     color: #8b8d99;
     margin: 14px 0 20px;
-    text-transform: uppercase;
+    text-transform: var(--posterTransform, uppercase);
+    font-family: var(--posterFont, 'Arial Black', Arial, sans-serif);
   }
   #poster .art {
     flex: 1;
@@ -351,6 +358,20 @@
 
   <label>Tagline (use *word* for accent color)</label>
   <input type="text" id="tagline" value="Artist Drop Sales Data">
+
+  <label style="margin-top:16px;">Font style</label>
+  <select id="fontStyle">
+    <option value="default" selected>Default (Bold Sans)</option>
+    <option value="rockstar">Rockstar (Anton)</option>
+    <option value="grunge">Grunge / Punk (Permanent Marker)</option>
+    <option value="popstar">Popstar (Bungee)</option>
+    <option value="country">Country / Western (Rye)</option>
+    <option value="street">Street / Hip-Hop (Luckiest Guy)</option>
+    <option value="edm">EDM / Futuristic (Orbitron)</option>
+    <option value="luxury">Elegant / Luxury (Playfair Display)</option>
+    <option value="script">Script / Signature (Pacifico)</option>
+    <option value="stadium">Stadium / Varsity (Staatliches)</option>
+  </select>
     </div>
   </div>
 
@@ -529,6 +550,28 @@ function parseMoney(str) {
   const n = parseFloat(String(str).replace(/[^0-9.\-]/g, ''));
   return isNaN(n) ? 0 : n;
 }
+
+/* ---- Font style ---- */
+const FONT_MAP = {
+  default: { family: `'Arial Black', Arial, sans-serif`, upper: 'uppercase' },
+  rockstar: { family: `'Anton', 'Arial Black', sans-serif`, upper: 'uppercase' },
+  grunge: { family: `'Permanent Marker', cursive`, upper: 'none' },
+  popstar: { family: `'Bungee', 'Arial Black', sans-serif`, upper: 'uppercase' },
+  country: { family: `'Rye', serif`, upper: 'uppercase' },
+  street: { family: `'Luckiest Guy', cursive`, upper: 'uppercase' },
+  edm: { family: `'Orbitron', sans-serif`, upper: 'uppercase' },
+  luxury: { family: `'Playfair Display', serif`, upper: 'none' },
+  script: { family: `'Pacifico', cursive`, upper: 'none' },
+  stadium: { family: `'Staatliches', sans-serif`, upper: 'uppercase' }
+};
+
+function syncFont() {
+  const key = document.getElementById('fontStyle').value;
+  const f = FONT_MAP[key] || FONT_MAP.default;
+  poster.style.setProperty('--posterFont', f.family);
+  poster.style.setProperty('--posterTransform', f.upper);
+}
+document.getElementById('fontStyle').addEventListener('change', syncFont);
 
 function calcStats() {
   const retailVal = parseMoney(document.getElementById('retail').value);
@@ -735,6 +778,8 @@ document.getElementById('resetBtn').addEventListener('click', () => {
   Object.keys(DEFAULTS).forEach(id => {
     document.getElementById(id).value = DEFAULTS[id];
   });
+  document.getElementById('fontStyle').value = 'default';
+  syncFont();
   document.getElementById('imgUrl').value = '';
   document.getElementById('imgFile').value = '';
   document.getElementById('pImg').src = '';
@@ -782,13 +827,14 @@ document.getElementById('resetBtn').addEventListener('click', () => {
 });
 
 window.addEventListener('resize', fitStage);
-window.addEventListener('load', () => { calcStats(); sync(); fitStage(); syncLogo(); syncImgOpacity(); syncImgSize(); syncCustomBg(); });
+window.addEventListener('load', () => { calcStats(); sync(); fitStage(); syncLogo(); syncImgOpacity(); syncImgSize(); syncCustomBg(); syncFont(); });
 calcStats();
 sync();
 syncLogo();
 syncImgOpacity();
 syncImgSize();
 syncCustomBg();
+syncFont();
 </script>
 
 </body>
